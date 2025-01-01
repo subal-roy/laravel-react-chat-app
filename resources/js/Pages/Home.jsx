@@ -6,15 +6,19 @@ import ChatLayout from "@/Layouts/ChatLayout";
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
 import { useEffect, useRef, useState } from "react";
 
-function Home({selectedConversation = null, messages= null }) {
+function Home({ selectedConversation = null, messages = null }) {
     const [localMessages, setLocalMessages] = useState([]);
     const messagesCtrRef = useRef(null);
+    console.log("message", messages);
 
     useEffect(() => {
         setTimeout(() => {
-            messagesCtrRef.current.scrollTop = messagesCtrRef.current.scrollHeight;
+            if (messagesCtrRef.current) {
+                messagesCtrRef.current.scrollTop =
+                    messagesCtrRef.current.scrollHeight;
+            }
         }, 10);
-    }, [selectedConversation])
+    }, [selectedConversation]);
 
     useEffect(() => {
         setLocalMessages(messages ? messages.data.reverse() : []);

@@ -1,7 +1,7 @@
 import { usePage } from "@inertiajs/react";
 import UserAvater from "./UserAvater";
 import ReactMarkdown from "react-markdown";
-import { formatMessageDateLong } from "@/helpers";
+import { formatMessageDateLong} from "@/helpers";
 
 const MessageItem = ({ message}) => {
     const currentUser = usePage().props.auth.user;

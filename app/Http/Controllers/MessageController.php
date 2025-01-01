@@ -10,6 +10,7 @@ use App\Models\Group;
 use App\Models\Message;
 use App\Models\MessageAttachment;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class MessageController extends Controller
@@ -65,7 +66,7 @@ class MessageController extends Controller
 
     public function store(StoreMessageRequest $request)
     {
-        $data = $request->validated();
+        $data = $request->validated(); Log::info($data);
         $data['sender_id'] = auth()->id();
         $receiverId = $data['receiver_id'] ?? null;
         $groupId = $data['group_id'] ?? null;
