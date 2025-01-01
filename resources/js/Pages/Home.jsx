@@ -20,8 +20,6 @@ function Home({selectedConversation = null, messages= null }) {
         setLocalMessages(messages ? messages.data.reverse() : []);
     }, [messages]);
 
-    console.log("localMessages", localMessages);
-
     return (
         <>
             {!messages && (

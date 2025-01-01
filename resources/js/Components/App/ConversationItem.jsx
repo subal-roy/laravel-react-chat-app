@@ -10,12 +10,12 @@ const ConversationItem = ({
 }) => {
     const page = usePage();
     const currentUser = page.props.auth.user;
-    let classes = "border-trasnparent";
+    let classes = "border-transparent";
     if (selectedConversation) {
         if (
             !selectedConversation.is_group &&
             !conversation.is_group &&
-            selectedConversation == conversation.id
+            selectedConversation.id == conversation.id
         ) {
             classes = "border-blue-500 bg-black/20";
         }

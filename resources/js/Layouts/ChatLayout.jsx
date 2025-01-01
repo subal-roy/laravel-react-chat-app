@@ -124,9 +124,7 @@ const ChatLayout = ({ children }) => {
                                     }${conversation.id}`}
                                     conversation={conversation}
                                     online={!!isUserOnline(conversation.id)}
-                                    setLocalConversations={
-                                        setLocalConversations
-                                    }
+                                    selectedConversation={selectedConversation}
                                 />
                             ))}
                     </div>
