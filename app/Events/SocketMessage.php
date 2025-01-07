@@ -12,6 +12,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class SocketMessage implements ShouldBroadcastNow
 {
@@ -25,7 +26,7 @@ class SocketMessage implements ShouldBroadcastNow
         //
     }
 
-    public function broadCastWith(): array
+    public function broadcastWith(): array
     {
         return [
             'message' => new MessageResource($this->message)
@@ -41,13 +42,13 @@ class SocketMessage implements ShouldBroadcastNow
     {
         $m = $this->message;
         $channels = [];
-
+        Log::info('message' . $m);
         if($m->group_id) {
             $channels[] = new PrivateChannel('message.group.' . $m->group_id);
         } else {
             $channels[] = new PrivateChannel('message.user.' . collect([$m->sender_id, $m->receiver_id])->sort()->implode('-'));
         }
-
+        Log::info('channels' . json_encode($channels));
         return $channels;
     }
 }
