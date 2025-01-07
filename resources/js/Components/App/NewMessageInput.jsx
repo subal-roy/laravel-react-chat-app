@@ -35,6 +35,7 @@ const NewMessageInput = ({value, onChange, onSend}) => {
         rows="1"
         placeholder="Type a message"
         onChange={(ev)=> onChangeEvent(ev)}
+        onKeyDown={onInputKeyDown}
         className="input input-bordered w-full rounded-r-none resize-none overflow-y-auto max-h-40"
         >
 
